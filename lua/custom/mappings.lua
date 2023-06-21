@@ -36,7 +36,14 @@ M.lspconfig = {
       function()
         vim.diagnostic.goto_next({ float = { border = "rounded" }})
       end,
-      "Goto next",
+      "Goto next diagnostic",
+    },
+
+    ["gh"] = {
+      function()
+        vim.lsp.buf.references()
+      end,
+      "LSP references",
     },
   }
 }
