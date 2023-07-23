@@ -252,19 +252,6 @@ local default_plugins = {
       end
     end,
   },
-
-  -- Only load whichkey after all the gui
-  {
-    "folke/which-key.nvim",
-    keys = { "<leader>", '"', "'", "`", "c", "v" },
-    init = function()
-      require("core.utils").load_mappings "whichkey"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "whichkey")
-      require("which-key").setup(opts)
-    end,
-  },
 }
 
 local config = require("core.utils").load_config()
