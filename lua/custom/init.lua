@@ -2,6 +2,8 @@
 vim.wo.scrolloff = 10
 vim.wo.foldmethod = "indent"
 vim.wo.foldenable = false
+vim.wo.linebreak = true
+vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = true, silent = true })
 
 -- special commands
 

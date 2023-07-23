@@ -52,6 +52,7 @@ local plugins = {
         telescope.load_extension(ext)
       end
     end,
+    lazy = false,
   },
 
   -- Install a plugin
@@ -69,8 +70,14 @@ local plugins = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim"
     },
-  }
+    lazy = false,
+  },
 
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' ,
+    lazy = false,
+  }
 
 
   -- To make a plugin not be loaded
