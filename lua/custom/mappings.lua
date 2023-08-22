@@ -32,6 +32,13 @@ M.lspconfig = {
       "Floating diagnostic",
     },
 
+    ["ca"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
+    },
+
     ["<C-j>"] = {
       function()
         vim.diagnostic.goto_next({ float = { border = "rounded" }})

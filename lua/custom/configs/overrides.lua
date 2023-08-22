@@ -82,9 +82,10 @@ M.nvimtree = {
 
 M.cmp = {
   sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "nvim_lua" },
+    { name = "nvim_lsp", max_item_count = 4},
+    { name = "luasnip", max_item_count = 4},
+    { name = "nvim_lua", max_item_count = 4},
+    { name = "buffer", max_item_count = 4 }
     -- { name = "path" },
     -- { name = "buffer" },
   }

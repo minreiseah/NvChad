@@ -68,8 +68,7 @@ local plugins = {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = {
       "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim"
-    },
+      "nvim-lua/plenary.nvim" },
     lazy = false,
   },
 
@@ -77,8 +76,25 @@ local plugins = {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' ,
     lazy = false,
-  }
+  },
 
+  {
+    'lervag/vimtex',
+    config = function()
+      vim.g.tex_flavor='latex'
+      vim.g.vimtex_view_method='zathura'
+      vim.g.vimtex_quickfix_mode = 0
+
+      vim.g.tex_conceal = 'abdgm'
+
+      vim.g.vimtex_view_general_viewer = 'okular'
+      vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
+
+      vim.g.vimtex_quickfix_enabled = 1
+      vim.g.vimtex_syntax_enabled = 1
+    end,
+    ft = 'tex'
+  },
 
   -- To make a plugin not be loaded
   -- {
