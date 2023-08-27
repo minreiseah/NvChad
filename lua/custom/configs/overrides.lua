@@ -80,15 +80,34 @@ M.nvimtree = {
   on_attach = nvimtree_on_attach,
 }
 
-M.cmp = {
-  sources = {
-    { name = "nvim_lsp", max_item_count = 4},
-    { name = "luasnip", max_item_count = 4},
-    { name = "nvim_lua", max_item_count = 4},
-    { name = "buffer", max_item_count = 4 }
-    -- { name = "path" },
-    -- { name = "buffer" },
-  }
-}
+-- M.cmp = function()
+--   local disabled_filetypes = {
+--     'markdown',
+--     'txt',
+--     'log',
+--     'tex',
+--   }
+--
+--   local filetype = vim.bo.filetype
+--
+--   for _, ft in ipairs(disabled_filetypes) do
+--     if filetype == ft then
+--       return {
+--         sources = {}
+--       }
+--     end
+--   end
+--
+--   return {
+--     sources = {
+--       { name = "nvim_lsp", max_item_count = 4 },
+--       { name = 'nvim_lsp_signature_help', max_item_count=4 },
+--       { name = "nvim_lua", max_item_count = 4 },
+--       -- { name = "buffer", max_item_count = 4 },
+--       -- { name = "path", max_item_count = 4 },
+--       -- { name = "luasnip", max_item_count = 4 },
+--     }
+--   }
+-- end
 
 return M

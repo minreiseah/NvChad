@@ -105,12 +105,21 @@ local options = {
     }),
   },
   sources = {
-    { name = "nvim_lsp" },
-    -- { name = "luasnip" },
-    -- { name = "buffer" },
-    { name = "nvim_lua" },
-    -- { name = "path" },
+    { name = "nvim_lsp", max_item_count = 4 },
+    { name = 'nvim_lsp_signature_help', max_item_count=4 },
+    { name = "nvim_lua", max_item_count = 4 },
+    { name = "buffer", max_item_count = 4 },
+    { name = "path", max_item_count = 4 },
   },
+
+  cmp.setup.filetype('tex', {
+    sources = {}
+  }),
+
+  cmp.setup.filetype('markdown', {
+    sources = {}
+  })
+
 }
 
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then

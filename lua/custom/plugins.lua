@@ -80,20 +80,65 @@ local plugins = {
 
   {
     'lervag/vimtex',
+    lazy = false,
     config = function()
       vim.g.tex_flavor='latex'
       vim.g.vimtex_view_method='zathura'
       vim.g.vimtex_quickfix_mode = 0
 
+      -- vim.g.vimtex_view_general_viewer = 'okular'
+      -- vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
+
+      -- vim.g.vimtex_quickfix_enabled = 1
+      -- vim.g.vimtex_syntax_enabled = 1
+
+      -- only conceals .tex files
       vim.g.tex_conceal = 'abdgm'
+      vim.cmd[[ autocmd BufNewFile,BufRead *.tex setlocal conceallevel=2 ]]
+      vim.cmd[[ hi clear Conceal ]]
+      vim.g.vimtex_syntax_conceal = {
+        accents = 1,
+        ligatures = 1,
+        cites = 1,
+        fancy = 0,
+        greek = 1,
+        math_bounds = 1,
+        math_delimiters = 1,
+        math_fracs = 1,
+        math_super_sub = 1,
+        math_symbols = 1,
+        sections = 1,
+        styles = 1,
+      }
 
-      vim.g.vimtex_view_general_viewer = 'okular'
-      vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
+      -- selective highlighting
+      vim.g.tex_fast = ""
 
-      vim.g.vimtex_quickfix_enabled = 1
-      vim.g.vimtex_syntax_enabled = 1
+      vim.g.vimtex_syntax_custom_cmds = {
+        {name = 'boldsymbol', conceal = 1},
+        {name = 'boldsymbol', mathmode = 1, conceal = 1},
+        {name = 'textbf', conceal = 1},
+        {name = 'textbf', mathmode = 1, conceal = 1},
+      }
+
+      -- Save file on exiting Insert Mode
+      -- vim.cmd[[ autocmd InsertLeave *.tex update ]]
+
+      vim.g.vimtex_compiler_latexmk = {
+        aux_dir = 'out',
+        out_dir = 'out',
+        callback = 1,
+        continuous = 1,
+        executable = 'latexmk',
+        hooks = {},
+        options = {
+          '-verbose',
+          '-file-line-error',
+          '-synctex=1',
+          '-interaction=nonstopmode',
+        },
+      }
     end,
-    ft = 'tex'
   },
 
   -- To make a plugin not be loaded

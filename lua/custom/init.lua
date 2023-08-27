@@ -25,12 +25,14 @@ function TermWrapper(command)
   vim.cmd('autocmd BufEnter <buffer> startinsert')
 end
 
+vim.cmd("command! -nargs=0 CompileAndRunC lua TermWrapper(string.format('gcc -g -o %s %s && ./%s', vim.fn.expand('%:r'), vim.fn.expand('%'), vim.fn.expand('%:r')))")
 vim.cmd("command! -nargs=0 CompileAndRunCPPFast lua TermWrapper(string.format('g++ -std=c++17 %s -O2 -Wno-unused-result && ./a.out', vim.fn.expand('%')))")
 vim.cmd("command! -nargs=0 CompileAndRunCPPSafe lua TermWrapper(string.format('g++ -std=c++17 -Wshadow -Wall %s -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ./a.out', vim.fn.expand('%')))")
 vim.cmd("command! -nargs=0 CompileAndRunPython lua TermWrapper(string.format('python3 %s', vim.fn.expand('%')))")
 vim.cmd("command! -nargs=0 CompileAndRunJavascriptNode lua TermWrapper(string.format('node %s', vim.fn.expand('%')))")
 vim.cmd("command! -nargs=0 CompileAndRunJava lua TermWrapper(string.format('javac %s && java -cp . %s', vim.fn.expand('%'), vim.fn.expand('%:r')))")
 
+vim.cmd("autocmd FileType c nnoremap <F8> :CompileAndRunC<CR>")
 vim.cmd("autocmd FileType cpp nnoremap <F8> :CompileAndRunCPPFast<CR>")
 vim.cmd("autocmd FileType cpp nnoremap <F9> :CompileAndRunCPPSafe<CR>")
 vim.cmd("autocmd FileType python nnoremap <F8> :CompileAndRunPython<CR>")
