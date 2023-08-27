@@ -141,6 +141,18 @@ local plugins = {
     end,
   },
 
+  {
+    "SirVer/ultisnips",
+    config = function()
+      vim.g.UltiSnipsExpandTrigger = "<tab>"
+      vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
+      vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+      vim.g.UltiSnipsSnippetDirectories = {vim.fn.expand("$HOME") .. "/.config/nvim/UltiSnips"}
+    end,
+    lazy = false,
+
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
