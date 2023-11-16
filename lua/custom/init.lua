@@ -4,6 +4,7 @@ vim.wo.foldmethod = "indent"
 vim.wo.foldenable = false
 vim.wo.linebreak = true
 vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-i>', { noremap = true, silent = true })
 
 -- special commands
 
@@ -62,5 +63,24 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter" }, {
     vim.t.bufs = vim.tbl_filter(function(bufnr)
       return vim.api.nvim_buf_get_option(bufnr, "modified")
     end, vim.t.bufs)
+  end,
+})
+
+-- custom settings per filetype
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.opt.shiftwidth = 4
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop = 4
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "c",
+  callback = function()
+    vim.opt.shiftwidth = 4
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop = 4
   end,
 })
